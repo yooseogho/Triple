@@ -170,7 +170,7 @@
 	    <p>&copy; 2024 My Website. All rights reserved.</p>
 		<p>자동화 배포 프로젝트입니다.</p>
 	    <p>우리는 지속적인 개선과 혁신을 통해 최상의 서비스를 제공합니다.</p>
-	    <p>문의: support@mywebsite.com</p>
+	    <p>문의: tjrgh6362@naver.com</p>
 	</footer>
 
 	
