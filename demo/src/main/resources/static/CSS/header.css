@@ -1,0 +1,51 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.site-header {
+    position: fixed; /* 헤더를 고정 */
+    top: 0; /* 상단에 위치 */
+    left: 0; /* 왼쪽에 위치 */
+    right: 0; /* 오른쪽에 위치 */
+    background: #35424a; /* 헤더 배경색 */
+    color: #ffffff; /* 텍스트 색상 */
+    padding: 20px 0; /* 상하 패딩 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.site-nav .nav-list {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+}
+
+.site-nav .nav-item {
+    display: inline; /* 리스트 아이템을 인라인으로 표시 */
+    margin: 0 15px; /* 좌우 마진 */
+}
+
+.site-nav .nav-link {
+    color: #ffffff; /* 링크 색상 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    padding: 5px 10px; /* 링크에 패딩 추가 */
+    transition: background 0.3s; /* 배경 전환 효과 */
+}
+
+.site-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 변경 */
+    border-radius: 5px; /* 호버 시 모서리 둥글게 */
+}
+
+body {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: space-between; /* 양쪽 끝으로 배치 */
+    margin-top: 80px; /* 헤더 높이만큼 마진 추가 */
+}
+
+
+
+

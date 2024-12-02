@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.MembersDao">
+
+<insert id="insertMember" parameterType="com.example.demo.entity.Members">
+    INSERT INTO members (no, id, passwd, email, del)
+    VALUES (member_seq.NEXTVAL, #{id}, #{passwd}, #{email}, 0)
+</insert>
+
+
+     <!-- ID로 회원 조회 -->
+    <select id="findById" parameterType="string" resultType="com.example.demo.entity.Members">
+        SELECT no, id, passwd, email, del
+        FROM members
+        WHERE id = #{id} AND del = 0
+    </select>
+    
+    
+</mapper>

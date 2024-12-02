@@ -1,0 +1,13 @@
+.site-footer {
+    position: absolute; /* 고정하지 않고 절대 위치 */
+    bottom: -500px; /* 페이지 하단보다 더 아래로 위치 */
+    left: 0; /* 왼쪽에 위치 */
+    right: 0; /* 오른쪽에 위치 */
+    background: #35424a; /* 배경색 */
+    color: #ffffff; /* 텍스트 색상 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 50px 0; /* 상하 패딩 */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* 위쪽 그림자 효과 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+	

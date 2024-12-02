@@ -1,0 +1,6 @@
+main {
+    flex-grow: 1; /* 메인 콘텐츠가 남은 공간을 차지하도록 설정 */
+    padding: 20px; /* 메인 콘텐츠 패딩 */
+    background: #f9f9f9; /* 메인 배경색 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 메인 콘텐츠 그림자 */
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.BoardDao">
+    <!-- 게시글 추가 -->
+    <insert id="insertBoard" parameterType="com.example.demo.entity.Board">
+        INSERT INTO board (no, title, content, board_date, mem_no, del)
+        VALUES (board_seq.NEXTVAL, #{title}, #{content}, SYSTIMESTAMP, #{memNo}, 0)
+    </insert>
+
+ <!-- 게시글 조회 -->
+<select id="selectBoardByNo" parameterType="long" resultType="com.example.demo.entity.Board">
+    SELECT no, title, content, mem_no
+    FROM board
+    WHERE no = #{no} AND del = 0
+</select>
+
+   <!-- 모든 게시글 조회 (DTO 사용) -->
+<select id="selectAllBoards" resultType="com.example.demo.dto.BoardDto$Read">
+    SELECT b.no, 
+           b.title, 
+           m.id AS writerId,    -- 작성자 ID
+           b.board_date AS boardDate, 
+           b.content,           -- 게시글 내용
+           b.mem_no             -- 작성자 회원 번호
+    FROM board b
+    LEFT JOIN members m ON b.mem_no = m.no
+    WHERE b.del = 0
+    ORDER BY b.no DESC          -- 최신 글 순으로 정렬
+</select>
+
+    
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="com.example.demo.entity.Board">
+        UPDATE board
+        SET title = #{title}, content = #{content}, board_date = SYSTIMESTAMP
+        WHERE no = #{no} AND del = 0
+    </update>
+
+    <!-- 게시글 삭제 (비활성화) -->
+    <update id="deleteBoardByNo" parameterType="long">
+        UPDATE board SET del = 1 WHERE no = #{no}
+    </update>
+
+    <!-- 삭제된 게시글 조회 -->
+    <select id="selectDeletedBoards" resultType="com.example.demo.entity.Board">
+        SELECT * FROM board WHERE del = 1
+    </select>
+    
+    
+    
+</mapper>
