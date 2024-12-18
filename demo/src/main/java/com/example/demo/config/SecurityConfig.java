@@ -34,8 +34,8 @@ public class SecurityConfig {
                 .formLogin(form -> form
                                 .usernameParameter("id")      // Spring Security가 사용할 파라미터 이름을 "id"로 변경
                                 .passwordParameter("passwd")  // Spring Security가 사용할 파라미터 이름을 "passwd"로 변경
-                                .loginPage("/login") // 커스텀 로그인 페이지 경로 지정
-                                .defaultSuccessUrl("/") // 로그인 성공 시 리다이렉트할 기본 경로
+                                .loginPage("/login")  // 상대 경로 사용 // 커스텀 로그인 페이지 경로 지정
+                                .defaultSuccessUrl("/", true)// 로그인 성공 시 리다이렉트할 기본 경로
                                 .permitAll() // 로그인 관련 URL은 인증 없이 접근 가능
                 )
                 // 로그아웃 설정
