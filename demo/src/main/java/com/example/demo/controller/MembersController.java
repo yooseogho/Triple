@@ -50,7 +50,9 @@ public class MembersController {
         membersService.insertMember(member);
 
         // 회원가입 후 로그인 페이지로 리디렉션
-        return "redirect:/login";
+        return "redirect:./login";
+
+        
     }
     
 
