@@ -29,10 +29,7 @@ public class BoardController {
 	private MembersService membersService;
 	
 	
-	@GetMapping("favicon.ico")
-	public void returnNoFavicon() {
-	    // Do nothing to prevent favicon.ico requests from being processed
-	}
+
 
 	@GetMapping(value = {"/", "/index"})
 	public String home(Model model, Principal principal) {
@@ -70,8 +67,6 @@ public class BoardController {
         model.addAttribute("board", new Board());
         return "write";
     }
-    
-    
     @PostMapping("/write")
     public String addBoard( Board board, Principal principal, RedirectAttributes redirectAttributes) {
         if (principal == null) {
@@ -94,7 +89,7 @@ public class BoardController {
         // 게시글 저장
         if (boardService.addBoard(board) > 0) {
             redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-            return "redirect:./";
+            return "/";
         } else {
             redirectAttributes.addFlashAttribute("message", "게시글 작성에 실패했습니다.");
             return "write";

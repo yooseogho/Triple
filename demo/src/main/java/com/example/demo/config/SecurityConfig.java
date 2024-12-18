@@ -43,7 +43,7 @@ public class SecurityConfig {
                         .permitAll()
                         .invalidateHttpSession(true) // 로그아웃 시 세션 무효화
                         .clearAuthentication(true)  // 인증 정보 삭제
-                        .logoutSuccessUrl("/login") // 로그아웃 후 리디렉션할 페이지
+                        .logoutSuccessUrl("/") // 로그아웃 후 리디렉션할 페이지
                 );
         
         
