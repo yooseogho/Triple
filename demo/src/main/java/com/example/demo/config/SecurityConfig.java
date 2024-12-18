@@ -28,15 +28,15 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .usernameParameter("id")
                 .passwordParameter("passwd")
-                .loginPage("/login") 
-                .defaultSuccessUrl("/", true) // 상대 경로 유지
+                .loginPage("/login")
+                .defaultSuccessUrl("http://200.200.200.163:30080/", true) // 절대 경로 사용
                 .permitAll()
             )
             .logout(logout -> logout
                 .permitAll()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutSuccessUrl("/") // 로그아웃 후 상대 경로
+                .logoutSuccessUrl("http://200.200.200.163:30080/") // 로그아웃 후 절대 경로
             );
 
         return http.build();
