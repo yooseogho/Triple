@@ -28,13 +28,13 @@ public class SecurityConfig {
                 .passwordParameter("passwd")
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("http://200.200.200.163:30080/", true)
-                .failureUrl("http://200.200.200.163:30080/login?error=true")
+                .defaultSuccessUrl("/", true) // 상대 경로로 수정
+                .failureUrl("/login?error=true") // 상대 경로로 수정
                 .permitAll()
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("http://200.200.200.163:30080/")
+                .logoutSuccessUrl("/") // 상대 경로로 수정
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .permitAll()

@@ -68,10 +68,10 @@ public class BoardController {
         return "write";
     }
     @PostMapping("/write")
-    public String addBoard( Board board, Principal principal, RedirectAttributes redirectAttributes) {
+    public String addBoard(Board board, Principal principal, RedirectAttributes redirectAttributes) {
         if (principal == null) {
             redirectAttributes.addFlashAttribute("message", "로그인 정보가 없습니다.");
-            return "write";
+            return "redirect:/write";
         }
 
         // Principal에서 username 가져오기
@@ -81,7 +81,7 @@ public class BoardController {
         Members member = membersService.findById(username);
         if (member == null) {
             redirectAttributes.addFlashAttribute("message", "회원 정보를 찾을 수 없습니다.");
-            return "write";
+            return "redirect:/write";
         }
 
         board.setMemNo(member.getNo()); // 작성자 회원 번호 설정
@@ -89,12 +89,13 @@ public class BoardController {
         // 게시글 저장
         if (boardService.addBoard(board) > 0) {
             redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-            return "index";
+            return "redirect:/index";
         } else {
             redirectAttributes.addFlashAttribute("message", "게시글 작성에 실패했습니다.");
-            return "write";
+            return "redirect:/write";
         }
     }
+
 
     
 }
