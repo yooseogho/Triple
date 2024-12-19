@@ -89,7 +89,7 @@ public class BoardController {
         // 게시글 저장
         if (boardService.addBoard(board) > 0) {
             redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-            return "/";
+            return "index";
         } else {
             redirectAttributes.addFlashAttribute("message", "게시글 작성에 실패했습니다.");
             return "write";
