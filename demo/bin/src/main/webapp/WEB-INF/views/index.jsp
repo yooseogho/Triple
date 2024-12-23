@@ -73,7 +73,7 @@
 	
 	<!-- 헤더 -->
 	<header class="site-header">
-	    <h1 class="site-title">TRIPLE POSTSdsfdfafdsaf</h1>
+	    <h1 class="site-title">TRI</h1>
 
 	    <nav class="site-nav">
 	        <ul class="nav-list">
