@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+
+    <!-- Global Configuration -->
+    <Service name="Catalina">
+	    <!-- A Coyote/HTTP connector on port 8080 -->
+
+	<Connector port="8888" protocol="HTTP/1.1"
+           address="0.0.0.0"
+           connectionTimeout="20000"
+           redirectPort="8443" />
+
+
+        <!-- An AJP 1.3 connector on port 8009 -->
+<Connector port="8009" protocol="AJP/1.3" redirectPort="8443" secretRequired="false" />
+
+        <!-- Define a single engine -->
+        <Engine name="Catalina" defaultHost="localhost">
+            <!-- Host configuration -->
+            <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true">
+                <!-- Context configuration -->
+                <Context path="" docBase="/opt/tomcat/webapps/ROOT" reloadable="true">
+                    <Parameter name="spring.config.location" value="file:/opt/tomcat/webapps/ROOT/WEB-INF/classes/application.properties" override="false"/>
+
+                    <!-- Static resources path -->
+                    <Resources className="org.apache.catalina.webresources.StandardRoot"
+                               docBase="/opt/tomcat/webapps/ROOT/static"
+                               allowLinking="true"/>
+                </Context>
+            </Host>
+        </Engine>
+    </Service>
+
+</Server>
+
