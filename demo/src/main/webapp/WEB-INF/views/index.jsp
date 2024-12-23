@@ -73,7 +73,7 @@
 	
 	<!-- 헤더 -->
 	<header class="site-header">
-	    <h1 class="site-title">!!!!!!유석호!!!!!!!!!!!!</h1>
+	    <h1 class="site-title">석호!!!</h1>
 
 	    <nav class="site-nav">
 	        <ul class="nav-list">
