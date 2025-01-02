@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tomcat
 spec:
-  replicas: 3  # Tomcat 파드를 3개로 실행
+  replicas: 2  # Tomcat 파드를 3개로 실행
   selector:
     matchLabels:
       app: tomcat
