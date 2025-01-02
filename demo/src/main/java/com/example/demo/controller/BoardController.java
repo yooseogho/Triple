@@ -18,6 +18,7 @@ import com.example.demo.entity.Board;
 import com.example.demo.entity.Members;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.MembersService;
+import com.example.demo.service.ProducerService;
 
 @Controller
 public class BoardController {
@@ -27,6 +28,9 @@ public class BoardController {
 	
 	@Autowired
 	private MembersService membersService;
+	
+	@Autowired
+	private ProducerService producerService;
 	
 	
 
@@ -67,6 +71,7 @@ public class BoardController {
         model.addAttribute("board", new Board());
         return "write";
     }
+    
     @PostMapping("/write")
     public String addBoard(Board board, Principal principal, RedirectAttributes redirectAttributes) {
         if (principal == null) {
@@ -88,6 +93,11 @@ public class BoardController {
 
         // 게시글 저장
         if (boardService.addBoard(board) > 0) {
+            // Kafka에 메시지 전송
+            String message = String.format("New board created by %s: [Title: %s, Content: %s]",
+                    username, board.getTitle(), board.getContent());
+            producerService.sendMessage(message); // Kafka 토픽으로 메시지 전송
+
             redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 작성되었습니다.");
             return "redirect:/index";
         } else {
@@ -95,6 +105,9 @@ public class BoardController {
             return "redirect:/write";
         }
     }
+    
+    
+    
 
 
     

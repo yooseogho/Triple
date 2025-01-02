@@ -25,14 +25,6 @@ public class MembersService {
         return membersDao.findById(id); // ID로 회원 조회
     }
     
-    // 비밀번호 일치 여부 확인
-    public boolean isPasswordMatch(Members member) {
-        Members dbMember = membersDao.findById(member.getId());
-        if (dbMember == null) {
-            return false;
-        }
-        // 비밀번호 비교
-        return passwordEncoder.matches(member.getPasswd(), dbMember.getPasswd());
-    }
+
     
 }
