@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: k8s-3tier-node2
+      containers:
+        - name: tomcat-container
+          image: 390402542683.dkr.ecr.ap-northeast-2.amazonaws.com/eks/tomcat:latest
+          imagePullPolicy: Always

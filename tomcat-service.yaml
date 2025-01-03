@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-service
+spec:
+  selector:
+    app: tomcat
+  ports:
+  - protocol: TCP
+    port: 8888
+    targetPort: 8888
+  sessionAffinity: ClientIP  # 클라이언트 IP를 기반으로 세션 고정
+
