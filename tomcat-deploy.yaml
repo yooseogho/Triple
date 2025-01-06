@@ -16,5 +16,5 @@ spec:
         eks.amazonaws.com/nodegroup: k8s-3tier-node2
       containers:
         - name: tomcat-container
-          image: public.ecr.aws/b2y6q4q0/tomcatjw:latest
+          image: public.ecr.aws/r2f0e9n3/eks/tomcat:latest
           imagePullPolicy: Always
