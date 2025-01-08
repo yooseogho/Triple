@@ -70,10 +70,10 @@
 </head>
 <body>
     <!-- 헤더 -->
-	
+
 	<!-- 헤더 -->
 	<header class="site-header">
-	    <h1 class="site-title">TRIPLE POSTS</h1>
+	    <h1 class="site-title">TRIPLE POSTS!</h1>
 
 	    <nav class="site-nav">
 	        <ul class="nav-list">
