@@ -73,7 +73,7 @@
 
 	<!-- 헤더 -->
 	<header class="site-header">
-	    <h1 class="site-title">TRIPLE POSTS</h1>
+	    <h1 class="site-title">게시파</h1>
 
 	    <nav class="site-nav">
 	        <ul class="nav-list">
