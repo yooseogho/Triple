@@ -72,6 +72,9 @@ public class BoardController {
         return "write";
     }
     
+    
+    
+    
     @PostMapping("/write")
     public String addBoard(Board board, Principal principal, RedirectAttributes redirectAttributes) {
         if (principal == null) {
@@ -79,10 +82,8 @@ public class BoardController {
             return "redirect:/write";
         }
 
-        // Principal에서 username 가져오기
         String username = principal.getName();
-
-        // username으로 회원 정보 조회
+     
         Members member = membersService.findById(username);
         if (member == null) {
             redirectAttributes.addFlashAttribute("message", "회원 정보를 찾을 수 없습니다.");
@@ -91,20 +92,28 @@ public class BoardController {
 
         board.setMemNo(member.getNo()); // 작성자 회원 번호 설정
 
-        // 게시글 저장
-        if (boardService.addBoard(board) > 0) {
-            // Kafka에 메시지 전송
-            String message = String.format("New board created by %s: [Title: %s, Content: %s]",
+       
+        if (boardService.addBoard(board) > 0) {   // 게시글 저장
+        	
+            String message = String.format("New board created by %s: [Title: %s, Content: %s]", // Kafka에 메시지 전송
                     username, board.getTitle(), board.getContent());
+            
             producerService.sendMessage(message); // Kafka 토픽으로 메시지 전송
 
             redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 작성되었습니다.");
             return "redirect:/index";
-        } else {
+            
+        } 
+        
+        else {
             redirectAttributes.addFlashAttribute("message", "게시글 작성에 실패했습니다.");
             return "redirect:/write";
         }
     }
+    
+    
+    
+    
     
     
     
